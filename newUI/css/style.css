@@ -1,0 +1,64 @@
+*{
+	margin: 0px;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+.register:hover{
+	background:#1ec6de;
+	cursor: pointer; 
+}
+form{
+	width: auto;
+	height:968px;
+	background:#232832;
+}
+@font-face{
+ 	font-family: 'Segoe UI_2.woff2';
+ 	src:url("fonts/Segoe UI_2.woff2");
+}
+.nickname{
+	font-size: 36px;
+	font-variant:black;
+	color: #00c0f4;
+	font-family: Segoe UI_2,Segoe UI;
+
+}
+	.passworwd{
+		color: #00cabc;
+		font-size: 36px;
+		font-family: Segoe UI_2,Segoe UI;
+	}
+.content{
+	margin-left: 32%;
+	padding-top:13%;
+}
+	.nick{
+		border-radius: 8px;
+		background-color:#ebe9ef;
+		font-size: 30px;
+	}
+	.ball{
+		width: 20px;
+    	height: 20px;
+		border-radius: 50px;
+		background: #4973c7;
+		display:inline-block;
+		margin:5px;
+
+	}
+	.balls{
+		margin: 20px 0px 0px 0px;
+	}
+	.ball:nth-child(2){
+		transition: 300ms;
+	}
+.register{
+  background:#00a5bd;
+  height: 60px;
+  width: 370px;
+  border:none;
+  font-size: 37px;
+  color:white;
+}

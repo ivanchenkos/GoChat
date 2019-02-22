@@ -1,0 +1,69 @@
+body{
+	background:#292c35;
+}
+@font-face{
+	font-family: 'Segoe UI_2.woff2';
+ 	src:url("fonts/Segoe UI_2.woff2");
+}
+span{
+	font-size: 2em;
+	color: white;
+	font-family: Segoe UI_2,Segoe UI;
+	margin-left: 5%;
+}
+#massage{
+	top:15%;
+	left: 25%;
+	position: relative;
+	background:none;
+	border:none;
+	font-size: 1.3em;
+	width: 100%;
+}
+.input{
+	top: 80%;
+	left: 10%;
+	height: 80px;
+	width: 75%;
+	background:#343947;
+	border-width:5px;
+	border-style:solid;
+	position: absolute; 
+	cursor: text;
+	font-size: 5em;
+	font-family: Segoe UI_2,Segoe UI;
+}
+.reply:hover{
+	background:#babacc;
+}
+.reply{
+	height: 50px;
+	width: 10%;
+	background:#ededef;
+	border-width: 2px;
+	border-color: black;
+	border-style:solid;
+	position: absolute;
+	top: 82%;
+	left: 73%;
+	font-size: 2.5em;
+	text-align: center;
+	cursor: pointer;
+}
+.massage{
+	margin-top:5%;
+	margin-left: 10%;
+}
+	.head_lyaer{
+		height: 85px;
+		width: 25%;
+		background:white;
+	}
+		.subordinate_layer{
+			top: -15%;
+			left: -3%;
+			height: 85px;
+			width: 100%;
+			background:#00a3bb;
+			position: relative;
+		}
