@@ -7,9 +7,6 @@ type DbFindResultStruct struct {
 	Password string `bson:"Password"`
 }
 
-var endBlockLog = "log----------------------------------------"
-var endBlockReg = "reg----------------------------------------"
-
 type resultStruct struct {
 	Commandtype string
 	Nickname    string
@@ -41,6 +38,11 @@ type NewHTML struct {
 type InsertStruct struct {
 	Nickname string `bson:"Nickname"`
 	Password string `bson:"Password"`
+}
+
+type InsertMsgStruct struct {
+	Nickname string `bson:"Nickname"`
+	Message  string `bson:"Message"`
 }
 
 var upgrader = websocket.Upgrader{

@@ -39,6 +39,7 @@ func main() {
 				log.Fatal(err)
 			}
 			collection := mongoClient.Database("GoChat").Collection("Users")
+			collectionMsgs := mongoClient.Database("GoChat").Collection("Messages")
 			// Read message from browser
 			_, msg, err := conn.ReadMessage()
 			if err != nil {
@@ -51,45 +52,45 @@ func main() {
 				log.Println(ResultErr)
 			}
 			if result.Commandtype == "msg" {
-				send(result.SendMessage, conn)
+				for _, usr := range Users {
+					if usr.Connection == conn {
+						msgs(usr, result.SendMessage)
+						send(result.SendMessage, conn)
+						Msgs := InsertMsgStruct{usr.Nickname, result.SendMessage}
+						collectionMsgs.InsertOne(context.TODO(), Msgs)
+					}
+				}
+
 			}
 			if result.Commandtype == "reg" {
 				DbFindResult := new(DbFindResultStruct)
-				fmt.Println(endBlockReg)
-				fmt.Println("Получены данные :")
-				fmt.Println(result)
+				regg(result)
 				filter := bson.D{{"Nickname", result.Nickname}}
 				CollErr := collection.FindOne(context.TODO(), filter).Decode(DbFindResult)
 				if CollErr != nil {
 					insertStr := InsertStruct{result.Nickname, result.Password}
-					fmt.Println(CollErr)
-					fmt.Println("Аккаунт не обнаружен, внесение нового аккаунта в базу данных")
+					regSucces()
 					collection.InsertOne(context.TODO(), insertStr)
-					fmt.Println(endBlockReg)
 				} else {
-					fmt.Println("Такой аккаунт уже существует :")
-					fmt.Println(*DbFindResult)
-					fmt.Println(endBlockReg)
+					regFailure()
 				}
 			}
 			if result.Commandtype == "log" {
 
 				DbFindResult := new(DbFindResultStruct)
-				fmt.Println(endBlockLog)
-				fmt.Println("Получены данные :")
-				fmt.Println(result)
+				logg(result)
 				filter := bson.D{{"Nickname", result.Nickname}, {"Password", result.Password}}
 				CollErr := collection.FindOne(context.TODO(), filter).Decode(DbFindResult)
 				if CollErr != nil {
-					fmt.Println(CollErr)
-					fmt.Println(endBlockLog)
-				} else {
-					fmt.Println("Ответ с базы данных :")
-					fmt.Println(*DbFindResult)
-					fmt.Println(endBlockLog)
 
-					page, _ := ioutil.ReadFile("../" + configJSON.UIFolderName + "/chat.html")
-					pagestring := string(page)
+					logFailure()
+
+				} else {
+
+					logSucces()
+
+					chatTemplate, _ := ioutil.ReadFile("../" + configJSON.UIFolderName + "/chat.html")
+					pagestring := string(chatTemplate)
 					pgsend, _ := json.Marshal(NewHTML{"log", "sucs", pagestring})
 
 					newuser := &User{conn, DbFindResult.Nickname}
@@ -108,11 +109,9 @@ func main() {
 
 }
 func send(message string, conn *websocket.Conn) {
-	fmt.Println("Сообщение : " + message)
 	// Write message back to browser
 	for _, User := range Users {
 		if User.Connection != nil {
-			fmt.Println("Отправка сообщения : ", message, " для : ", User.Connection.RemoteAddr())
 
 			var userNickname string
 			for _, usr := range Users {
@@ -132,11 +131,9 @@ func send(message string, conn *websocket.Conn) {
 	}
 }
 func sendFromServer(message string) {
-	fmt.Println("Сообщение : " + message)
 	// Write message back to browser
 	for _, User := range Users {
 		if User.Connection != nil {
-			fmt.Println("Отправка сообщения : ", message, " для : ", User.Connection.RemoteAddr())
 
 			msg, _ := json.Marshal(RecMSG{"msg", message, "Server"})
 

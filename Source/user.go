@@ -15,8 +15,8 @@ type User struct {
 }
 
 func (user *User) pingUser() {
-	fmt.Println("Начата проверка для :", user.Nickname)
-	defer fmt.Println("Подключение закрыто для :", user.Nickname)
+	fmt.Println("[PING]--Начата проверка для :", user.Nickname)
+	defer fmt.Println("[PING]--Подключение закрыто для :", user.Nickname)
 
 	for {
 		timer := time.NewTimer(10 * time.Second)
