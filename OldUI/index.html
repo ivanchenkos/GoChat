@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+	<script type="text/javascript" src="/main.js"></script>
+	<meta charset="utf-8">
+	<title>Simple Go Web App</title>
+</head>
+
+<body>
+	<div id="mainBox">
+		<div id="LogBox" style="display:inline-block">
+			<form name="formlog" method="post">
+				<input type="text" id="nickLog" name="nickLog" placeholder="Ник">
+				<input type="text" id="PassLog" name="message" placeholder="Пароль">
+				<button onclick="sendLog()" type="button" class="btn-next">Войти</button>
+			</form>
+		</div>
+		<div id="RegBox" style="display:inline-block">
+			<form name="formreg" method="post">
+				<input type="text" id="nickReg" name="nickReg" placeholder="Ник">
+				<input type="text" id="PassReg" name="message" placeholder="Пароль">
+				<input type="text" id="PassRegRepeat" name="message" placeholder="Повторите пароль">
+				<button onclick="sendReg()" type="button" class="btn-next">Регистрация</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

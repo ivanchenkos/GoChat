@@ -1,0 +1,7 @@
+<div style="display:inline-block">
+		<form name="formlog" method="post">
+			<input type="text" id="nickLog" name="nickLog" placeholder="Ник">
+			<input type="text" id="PassLog" name="message" placeholder="Пароль">
+			<button onclick="sendLog()" type="button" class="btn-next">Войти</button>
+		</form>
+	</div>

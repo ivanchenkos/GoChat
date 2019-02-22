@@ -1,0 +1,7 @@
+{
+    "IP": "localhost",
+    "Port": "8181",
+    "UIFolderName": "OldUI",
+    "MongoIP": "localhost",
+    "MongoPort": "27017"
+}
