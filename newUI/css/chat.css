@@ -11,15 +11,6 @@ span{
 	font-family: Segoe UI_2,Segoe UI;
 	margin-left: 5%;
 }
-#massage{
-	top:15%;
-	left: 25%;
-	position: relative;
-	background:none;
-	border:none;
-	font-size: 1.3em;
-	width: 100%;
-}
 .input{
 	top: 80%;
 	left: 10%;
@@ -55,15 +46,21 @@ span{
 	margin-left: 10%;
 }
 	.head_lyaer{
-		height: 85px;
-		width: 25%;
+		max-width: 90%;
 		background:white;
 	}
 		.subordinate_layer{
-			top: -15%;
-			left: -3%;
-			height: 85px;
-			width: 100%;
+			top: -7%;
+			left: -2%;
 			background:#00a3bb;
+			font-size: 2.1vh;
+			word-wrap: break-word;
 			position: relative;
+			display: block;
+			
+		}
+		#text{
+			margin-top: 1%;
+			line-height:125%;
+			color: black;
 		}
