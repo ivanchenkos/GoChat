@@ -12,13 +12,16 @@ span{
 	margin-left: 5%;
 }
 .input{
-	height: 65px;
+	height:auto;
 	width: 84%;
 	background:#343947;
 	border:none; 
 	cursor: text;
-	font-size: 5em;
+	font-size: 2em;
 	font-family: Segoe UI_2,Segoe UI;
+	color: white;
+	z-index: 2;
+	display:inline-block;
 }
 .fon_input{
 	background:#343947;
@@ -29,21 +32,21 @@ span{
 	cursor: text;
 	top: 85%;
 	left: 10%;
-	height: 70px;
 	width: 75%;
+	z-index: 1;
 }
 .reply:hover{
 	background:#babacc;
 }
 .reply{
-	height: 50px;
+	height: 98%;
 	width: 10%;
 	background:#ededef;
 	border-width: 2px;
 	border-color: black;
 	border-style:solid;
 	position: absolute;
-	top: 15%;
+	
 	left: 85%;
 	font-size: 2.5em;
 	text-align: center;
