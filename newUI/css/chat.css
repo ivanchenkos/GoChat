@@ -12,17 +12,25 @@ span{
 	margin-left: 5%;
 }
 .input{
-	top: 80%;
-	left: 10%;
-	height: 80px;
-	width: 75%;
+	height: 65px;
+	width: 84%;
+	background:#343947;
+	border:none; 
+	cursor: text;
+	font-size: 5em;
+	font-family: Segoe UI_2,Segoe UI;
+}
+.fon_input{
 	background:#343947;
 	border-width:5px;
 	border-style:solid;
 	position: absolute; 
+	border-color: black;
 	cursor: text;
-	font-size: 5em;
-	font-family: Segoe UI_2,Segoe UI;
+	top: 85%;
+	left: 10%;
+	height: 70px;
+	width: 75%;
 }
 .reply:hover{
 	background:#babacc;
@@ -35,8 +43,8 @@ span{
 	border-color: black;
 	border-style:solid;
 	position: absolute;
-	top: 82%;
-	left: 73%;
+	top: 15%;
+	left: 85%;
 	font-size: 2.5em;
 	text-align: center;
 	cursor: pointer;
@@ -44,23 +52,43 @@ span{
 .massage{
 	margin-top:5%;
 	margin-left: 10%;
+	max-height:70%;
 }
 	.head_lyaer{
 		max-width: 90%;
 		background:white;
+		display:block;
+	}
+	.head_lyaer_2{
+		max-width: 90%;
+		background:white;
+		display:block;
+		overflow: hidden;
 	}
 		.subordinate_layer{
-			top: -7%;
-			left: -2%;
-			background:#00a3bb;
+			top: -20px;
+			left: -20px;
+			background:#00cabc;
 			font-size: 2.1vh;
 			word-wrap: break-word;
 			position: relative;
 			display: block;
+			overflow: hidden;
+		}
+		.subordinate_layer_2{
+			top: -20px;
+			left: 20px;
+			background:#00a5bd;
+			font-size: 2.1vh;
+			word-wrap: break-word;
+			position: relative;
+			display: block;
+			overflow: hidden;
 			
 		}
-		#text{
+		.text{
 			margin-top: 1%;
 			line-height:125%;
 			color: black;
+
 		}
