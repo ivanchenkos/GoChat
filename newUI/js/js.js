@@ -1,7 +1,14 @@
 
 $(document).ready(function (){
-	if ($('.massage').css('height')>$('.massage').css('max-height')) {
-		$('.massage').css('margin-top',-1+"%");
-	}
-	$('div.fon_input').css('height')=$('div.input').css('height');
+	var kol = $('div.input').text();
+	
+		if (kol.length>93) {
+			$('div.fon_input').css('height','auto');
+		}
+		else{
+			$('div.fon_input').css('height',8+"%");
+		}
+		console.log(kol.length);
 });
+//93
+//length

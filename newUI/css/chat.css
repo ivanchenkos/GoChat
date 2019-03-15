@@ -21,7 +21,6 @@ span{
 	font-family: Segoe UI_2,Segoe UI;
 	color: white;
 	z-index: 2;
-	display:inline-block;
 }
 .fon_input{
 	background:#343947;
@@ -34,49 +33,43 @@ span{
 	left: 10%;
 	width: 75%;
 	z-index: 1;
+	display:inline-block;
 }
 .reply:hover{
 	background:#babacc;
 }
 .reply{
-	height: 98%;
 	width: 10%;
 	background:#ededef;
 	border-width: 2px;
 	border-color: black;
 	border-style:solid;
 	position: absolute;
-	
+	top:25%;
 	left: 85%;
-	font-size: 2.5em;
+	font-size: 1.5em;
 	text-align: center;
 	cursor: pointer;
 }
 .massage{
-	margin-top:5%;
-	margin-left: 10%;
-	max-height:70%;
+	margin-top:2%;
+	margin-left: 8%;
+	height:700px;
+	overflow-y: scroll
 }
 	.head_lyaer{
-		max-width: 90%;
+		max-width:95%;
 		background:white;
 		display:block;
-	}
-	.head_lyaer_2{
-		max-width: 90%;
-		background:white;
-		display:block;
-		overflow: hidden;
 	}
 		.subordinate_layer{
 			top: -20px;
-			left: -20px;
+			left: 20px;
 			background:#00cabc;
 			font-size: 2.1vh;
 			word-wrap: break-word;
 			position: relative;
 			display: block;
-			overflow: hidden;
 		}
 		.subordinate_layer_2{
 			top: -20px;
@@ -86,12 +79,9 @@ span{
 			word-wrap: break-word;
 			position: relative;
 			display: block;
-			overflow: hidden;
-			
 		}
 		.text{
-			margin-top: 1%;
-			line-height:125%;
 			color: black;
+			padding-top: 1%;
 
 		}
