@@ -1,7 +1,8 @@
 {
     "IP": "localhost",
     "Port": "8181",
-    "UIFolderName": "OldUI",
+    "UIFolderName": "newUI",
+    "IgnoreAckProtection": "y",
     "MongoIP": "localhost",
     "MongoPort": "27017"
 }
