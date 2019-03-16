@@ -16,8 +16,14 @@ import (
 	"github.com/mongodb/mongo-go-driver/mongo"
 )
 
+var mongoClient *mongo.Client
+var collection *mongo.Collection
+var collectionMsgs *mongo.Collection
+var errorMongoConnect error
+
 func main() {
 	go controller()
+	// configuration
 	//
 	configByte, _ := ioutil.ReadFile("../config.json")
 	configJSON := new(config)
@@ -29,17 +35,24 @@ func main() {
 	http.HandleFunc("/reg", func(w http.ResponseWriter, r *http.Request) {
 		conn, _ := upgrader.Upgrade(w, r, nil) // error ignored for sake of simplicity
 		// connecting to mongo data base
-		mongoClient, err := mongo.Connect(context.TODO(), "mongodb://"+configJSON.MongoIP+":"+configJSON.MongoPort)
-		if err != nil {
-			log.Fatal(err)
+		if configJSON.IgnoreAckProtection == "n" {
+			mongoClient, errorMongoConnect = mongo.Connect(context.TODO(), "mongodb://"+configJSON.MongoIP+":"+configJSON.MongoPort)
+			if errorMongoConnect != nil {
+				log.Fatal(errorMongoConnect)
+			}
 		}
+
 		for {
 			// Check the connection
-			if err := mongoClient.Ping(context.TODO(), nil); err != nil {
-				log.Fatal(err)
+
+			if configJSON.IgnoreAckProtection == "n" {
+				if err := mongoClient.Ping(context.TODO(), nil); err != nil {
+					log.Fatal(err)
+				}
+				collection = mongoClient.Database("GoChat").Collection("Users")
+				collectionMsgs = mongoClient.Database("GoChat").Collection("Messages")
 			}
-			collection := mongoClient.Database("GoChat").Collection("Users")
-			collectionMsgs := mongoClient.Database("GoChat").Collection("Messages")
+
 			// Read message from browser
 			_, msg, err := conn.ReadMessage()
 			if err != nil {
@@ -56,49 +69,67 @@ func main() {
 					if usr.Connection == conn {
 						msgs(usr, result.SendMessage)
 						send(result.SendMessage, conn)
-						Msgs := InsertMsgStruct{usr.Nickname, result.SendMessage}
-						collectionMsgs.InsertOne(context.TODO(), Msgs)
+						if configJSON.IgnoreAckProtection == "n" {
+							Msgs := InsertMsgStruct{usr.Nickname, result.SendMessage}
+							collectionMsgs.InsertOne(context.TODO(), Msgs)
+						}
+
 					}
 				}
 
 			}
 			if result.Commandtype == "reg" {
-				DbFindResult := new(DbFindResultStruct)
-				regg(result)
-				filter := bson.D{{"Nickname", result.Nickname}}
-				CollErr := collection.FindOne(context.TODO(), filter).Decode(DbFindResult)
-				if CollErr != nil {
-					insertStr := InsertStruct{result.Nickname, result.Password}
-					regSucces()
-					collection.InsertOne(context.TODO(), insertStr)
-				} else {
-					regFailure()
+				if configJSON.IgnoreAckProtection == "n" {
+					DbFindResult := new(DbFindResultStruct)
+					regg(result)
+					filter := bson.D{{"Nickname", result.Nickname}}
+					CollErr := collection.FindOne(context.TODO(), filter).Decode(DbFindResult)
+					if CollErr != nil {
+						insertStr := InsertStruct{result.Nickname, result.Password}
+						regSucces()
+						collection.InsertOne(context.TODO(), insertStr)
+					} else {
+						regFailure()
+					}
 				}
+
 			}
 			if result.Commandtype == "log" {
 
-				DbFindResult := new(DbFindResultStruct)
-				logg(result)
-				filter := bson.D{{"Nickname", result.Nickname}, {"Password", result.Password}}
-				CollErr := collection.FindOne(context.TODO(), filter).Decode(DbFindResult)
-				if CollErr != nil {
-
-					logFailure()
-
-				} else {
-
+				if configJSON.IgnoreAckProtection == "y" {
 					logSucces()
 
-					chatTemplate, _ := ioutil.ReadFile("../" + configJSON.UIFolderName + "/chat.html")
-					pagestring := string(chatTemplate)
-					pgsend, _ := json.Marshal(NewHTML{"log", "sucs", pagestring})
+					pgsend, _ := json.Marshal(NewHTML{"log", "sucs"})
 
-					newuser := &User{conn, DbFindResult.Nickname}
+					newuser := &User{conn, result.Nickname}
 					go newuser.pingUser()
 					Users = append(Users, newuser)
 
 					conn.WriteMessage(1, pgsend)
 				}
+				if configJSON.IgnoreAckProtection == "n" {
+					DbFindResult := new(DbFindResultStruct)
+					logg(result)
+					filter := bson.D{{"Nickname", result.Nickname}, {"Password", result.Password}}
+					CollErr := collection.FindOne(context.TODO(), filter).Decode(DbFindResult)
+					if CollErr != nil {
+
+						logFailure()
+
+					} else {
+
+						logSucces()
+
+						pgsend, _ := json.Marshal(NewHTML{"log", "sucs"})
+
+						newuser := &User{conn, DbFindResult.Nickname}
+						go newuser.pingUser()
+						Users = append(Users, newuser)
+
+						conn.WriteMessage(1, pgsend)
+					}
+				}
+
 			}
 		}
 	})
@@ -130,7 +161,7 @@ func send(message string, conn *websocket.Conn) {
 
 	}
 }
-func sendFromServer(message string) {
+func sendFromServerConsole(message string) {
 	// Write message back to browser
 	for _, User := range Users {
 		if User.Connection != nil {

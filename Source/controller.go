@@ -16,7 +16,7 @@ func controller() {
 
 		switch cm {
 		case "-wr":
-			go sendFromServer(cn)
+			go sendFromServerConsole(cn)
 		case "-shc":
 			fmt.Println(Users)
 		default:

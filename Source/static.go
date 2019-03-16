@@ -16,11 +16,12 @@ type resultStruct struct {
 }
 
 type config struct {
-	IP           string
-	Port         string
-	UIFolderName string
-	MongoIP      string
-	MongoPort    string
+	IP                  string
+	Port                string
+	UIFolderName        string
+	MongoIP             string
+	MongoPort           string
+	IgnoreAckProtection string
 }
 
 type RecMSG struct {
@@ -32,7 +33,6 @@ type RecMSG struct {
 type NewHTML struct {
 	Commandtype string
 	Resp        string
-	NewPage     string
 }
 
 type InsertStruct struct {
