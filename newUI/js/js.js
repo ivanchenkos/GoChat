@@ -94,6 +94,7 @@ function showMessage(message, nick) {
 	subordinate_layer.appendChild(ptext)
 	//Автоматический скролл вниз
 	window.scrollBy(0,180);
+	console.log(message)
     //messageElem.innerHTML = "<p>" + nick + " : " + message + "</p>";
     //document.getElementById('root').appendChild(messageElem);
 }
