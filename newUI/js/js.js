@@ -92,8 +92,8 @@ function showMessage(message, nick) {
 	ptext.className = "text"
 	ptext.innerHTML = nick + " : " + message
 	subordinate_layer.appendChild(ptext)
-	
-	console.log(message)
+	//Автоматический скролл вниз
+	window.scrollBy(0,180);
     //messageElem.innerHTML = "<p>" + nick + " : " + message + "</p>";
     //document.getElementById('root').appendChild(messageElem);
 }

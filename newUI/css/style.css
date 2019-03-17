@@ -11,6 +11,7 @@ a{
 }
 form{
 	width: auto;
+	left:35%;
 	height:968px;
 	background:#232832;
 }
@@ -20,24 +21,26 @@ form{
 }
 .nickname{
 	font-size: 36px;
-	font-variant:black;
 	color: #00c0f4;
 	font-family: Segoe UI_2,Segoe UI;
-
+	margin-left:2%;
 }
 	.passworwd{
 		color: #00cabc;
 		font-size: 36px;
 		font-family: Segoe UI_2,Segoe UI;
+		margin-left:2%;
 	}
 .content{
-	margin-left: 32%;
+	margin-left: 37%;
 	padding-top:13%;
 }
 	.nick{
 		border-radius: 8px;
 		background-color:#ebe9ef;
 		font-size: 30px;
+		outline:none;
+		outline-offset:0;
 	}
 	.ball{
 		width: 20px;
