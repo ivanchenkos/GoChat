@@ -1,5 +1,5 @@
 *{
-	margin: 0px;
+	margin: 0;
 }
 a{
 	text-decoration: none;
@@ -39,6 +39,7 @@ form{
 		border-radius: 8px;
 		background-color:#ebe9ef;
 		font-size: 30px;
+		font-family: 'Wak', cursive;
 		outline:none;
 		outline-offset:0;
 	}
@@ -60,8 +61,10 @@ form{
 .register{
   background:#00a5bd;
   height: 60px;
-  width: 370px;
+  width: 440px;
   border:none;
   font-size: 37px;
   color:white;
+  font-family: 'Wak', cursive;
+
 }
