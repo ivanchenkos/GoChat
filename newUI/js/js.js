@@ -1,18 +1,4 @@
-$(document).ready(function (){
-	var screen_height = screen.height,
-		screen_chat,
-		screen_input,
-		f=1;
-		if (f==1) {
-			screen_input=screen_height*0.75;
-			screen_chat=screen_height*0.70;
-			$('div.fon_input').css('top',screen_input);
-			$('div.massage').css('height',screen_chat);
-		}
-	
-	console.log(screen_height);
-	
-});
+
 var socket = new WebSocket("ws://localhost:8181/reg");
 function send(obj) {
     var SendMessage = {
@@ -59,6 +45,14 @@ socket.onmessage = function (event) {
         console.log(response_parse.Commandtype)
         if (response_parse.Resp == 'sucs') {
             document.body.innerHTML = document.querySelector('#chat-template').innerHTML;
+            var screen_height = screen.height,
+			screen_chat,
+			screen_input,
+				screen_input=screen_height*0.75;
+				screen_chat=screen_height*0.70;
+				$('div.fon_input').css('top',screen_input);
+				$('div.massage').css('height',screen_chat);
+			console.log(screen_height);
         } else {
             alert("Ошибка входа")
         }
@@ -72,6 +66,8 @@ function sendLog() {
     }
     var REGmessageJson = JSON.stringify(REGmessage)
     socket.send(REGmessageJson)
+
+
 }
 
 // показать сообщение в div#subscribe
@@ -97,7 +93,8 @@ function showMessage(message, nick) {
 	ptext.innerHTML = nick + " : " + message
 	subordinate_layer.appendChild(ptext)
 	//Автоматический скролл вниз
-	window.scrollBy(0,180);
+	var chatResult = $('div.massage');
+    chatResult.scrollTop(chatResult.prop('scrollHeight'));
 	console.log(message)
     //messageElem.innerHTML = "<p>" + nick + " : " + message + "</p>";
     //document.getElementById('root').appendChild(messageElem);
