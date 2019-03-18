@@ -16,19 +16,19 @@ form{
 	background:#232832;
 }
 @font-face{
- 	font-family: 'Segoe UI_2.woff2';
- 	src:url("fonts/Segoe UI_2.woff2");
+ 	font-family: 'Wak';
+ 	src:url("fonts/Wak-Black.woff");
 }
 .nickname{
 	font-size: 36px;
 	color: #00c0f4;
-	font-family: Segoe UI_2,Segoe UI;
+	font-family: 'Wak', cursive;
 	margin-left:2%;
 }
 	.passworwd{
 		color: #00cabc;
 		font-size: 36px;
-		font-family: Segoe UI_2,Segoe UI;
+		font-family: 'Wak', cursive;
 		margin-left:2%;
 	}
 .content{

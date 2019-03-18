@@ -35,7 +35,8 @@ socket.onmessage = function (event) {
     }
     if (response_parse.Commandtype == "reg") {
         if (response_parse.resp == "sucs") {
-            alert("Аккаунт создан")
+            alert("Аккаунт создан");
+            var logick= true;
         } else {
             alert("Ошибка создания аккаунта")
         }
@@ -53,6 +54,7 @@ socket.onmessage = function (event) {
 				$('div.fon_input').css('top',screen_input);
 				$('div.massage').css('height',screen_chat);
 			console.log(screen_height);
+			logick = true;
         } else {
             alert("Ошибка входа")
         }
@@ -95,7 +97,7 @@ function showMessage(message, nick) {
 	//Автоматический скролл вниз
 	var chatResult = $('div.massage');
     chatResult.scrollTop(chatResult.prop('scrollHeight'));
-	console.log(message)
+	console.log(message);
     //messageElem.innerHTML = "<p>" + nick + " : " + message + "</p>";
     //document.getElementById('root').appendChild(messageElem);
 }

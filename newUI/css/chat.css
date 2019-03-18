@@ -2,13 +2,13 @@ body{
 	background:#292c35;
 }
 @font-face{
-	font-family: 'Segoe UI_2.woff2';
- 	src:url("fonts/Segoe UI_2.woff2");
+	font-family: 'Wak';
+ 	src:url("fonts/Wak-Black.woff");
 }
 span{
 	font-size: 2em;
 	color: white;
-	font-family: Segoe UI_2,Segoe UI;
+	font-family: 'Marck Script', cursive;
 	
 }
 .input{
@@ -18,7 +18,7 @@ span{
 	border:none; 
 	cursor: text;
 	font-size: 2em;
-	font-family: Segoe UI_2,Segoe UI;
+	font-family: 'Wak', cursive;
 	color: white;
 	z-index: 2;
 	outline:none;
@@ -68,10 +68,12 @@ span{
 			top: -20px;
 			left: 20px;
 			background:#00cabc;
-			font-size: 2.1vh;
+			padding:20px;
+			font-size: 3.5vh;
 			word-wrap: break-word;
 			position: relative;
 			display: block;
+			font-family: 'Wak', cursive;
 		}
 		.subordinate_layer_2{
 			top: -20px;
@@ -84,5 +86,5 @@ span{
 		}
 		.text{
 			color: black;
-			padding-top: 1%;
+			
 		}
