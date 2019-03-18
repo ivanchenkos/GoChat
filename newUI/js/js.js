@@ -1,13 +1,7 @@
 $(document).ready(function (){
-	var kol = $('div.input').text();
-	
-		if (kol.length>93) {
-			$('div.fon_input').css('height','auto');
-		}
-		else{
-			$('div.fon_input').css('height',8+"%");
-		}
-		console.log(kol.length);
+	var screen_height = screen.height;
+	screen_height=screen_height*0.80;
+	$('div.massage').css('max-height',screen_height);
 });
 var socket = new WebSocket("ws://localhost:8181/reg");
 function send(obj) {
