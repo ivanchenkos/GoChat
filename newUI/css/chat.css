@@ -28,10 +28,9 @@ span{
 	background:#343947;
 	border-width:5px;
 	border-style:solid;
-	position: relative; 
+	position: absolute; 
 	border-color: black;
 	cursor: text;
-	top:85%;
 	margin-bottom: 5%;
 	left: 10%;
 	width: 75%;

@@ -1,7 +1,17 @@
 $(document).ready(function (){
-	var screen_height = screen.height;
-	screen_height=screen_height*0.80;
-	$('div.massage').css('max-height',screen_height);
+	var screen_height = screen.height,
+		screen_chat,
+		screen_input,
+		f=1;
+		if (f==1) {
+			screen_input=screen_height*0.75;
+			screen_chat=screen_height*0.70;
+			$('div.fon_input').css('top',screen_input);
+			$('div.massage').css('height',screen_chat);
+		}
+	
+	console.log(screen_height);
+	
 });
 var socket = new WebSocket("ws://localhost:8181/reg");
 function send(obj) {
