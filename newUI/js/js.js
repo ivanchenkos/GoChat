@@ -3,19 +3,23 @@ var socket = new WebSocket("ws://localhost:8181/reg");
 function send(obj) {
     var SendMessage = {
         Commandtype: "msg",
-        SendMessage: document.getElementById("messageM").textContent
+        SendMessage: $('#messageM').val()
     }
     var sndmsg = JSON.stringify(SendMessage);
 	socket.send(sndmsg);
-	
-    document.getElementById("messageM").textContent = ""
+    
+    $('#messageM').val( function(index, oldhtml) {
+        return ""
+    } );
+    
 }
 function pressKey(e, obj) {
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13 && !e.shiftKey) {
         
         send(obj);
         
-        return false;
+    } else if (e.keyCode == 13 && e.shiftKey ) {
+        
     }
 }
 function sendReg() {
@@ -36,7 +40,6 @@ socket.onmessage = function (event) {
     if (response_parse.Commandtype == "reg") {
         if (response_parse.resp == "sucs") {
             alert("Аккаунт создан");
-            var logick= true;
         } else {
             alert("Ошибка создания аккаунта")
         }
@@ -54,7 +57,6 @@ socket.onmessage = function (event) {
 				$('div.fon_input').css('top',screen_input);
 				$('div.massage').css('height',screen_chat);
 			console.log(screen_height);
-			logick = true;
         } else {
             alert("Ошибка входа")
         }

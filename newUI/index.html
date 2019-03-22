@@ -14,7 +14,8 @@
 	<div class="massage" id="root">
 	</div>
 	<div class="fon_input" id="pole">
-		<div contenteditable="true" id="messageM" class="input"></div>
+		
+		<input type="text" contenteditable="true" onkeypress="pressKey(event, this)" id="messageM" class="input">
 		<input class="reply" onclick="send(this)"  value="Reply" type="button">
 	</div>
 </template>
