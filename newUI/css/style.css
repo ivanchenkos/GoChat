@@ -17,7 +17,7 @@ form{
 }
 @font-face{
  	font-family: 'Wak';
- 	src:url("fonts/Wak-Black.woff");
+ 	src:url("../fonts/Wak-Black.woff");
 }
 .nickname{
 	font-size: 36px;
