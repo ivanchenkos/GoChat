@@ -19,7 +19,7 @@ function pressKey(e, obj) {
         send(obj);
         
     } else if (e.keyCode == 13 && e.shiftKey ) {
-        
+
     }
 }
 function sendReg() {
@@ -92,9 +92,9 @@ function showMessage(message, nick) {
 	subordinate_layer.type = "text"
 	head_lyaer.appendChild(subordinate_layer)
 	//create <p>
-	var ptext = document.createElement('p')
+	var ptext = document.createElement('xmp')
 	ptext.className = "text"
-	ptext.innerHTML = nick + " : " + message
+	ptext.innerHTML = String(nick.toString() + " : " + message.toString()) 
 	subordinate_layer.appendChild(ptext)
 	//Автоматический скролл вниз
 	var chatResult = $('div.massage');
